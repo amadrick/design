@@ -28,6 +28,11 @@
   --t12: rgba(0, 0, 0, 0.95);
 }
 
+html,
+body {
+  background-color: var(--z0);
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     /* Dark mode - Z scale (solid colors) */
