@@ -9,9 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-        // Z color scale
+        // Z scale (solid colors)
         z0: "var(--z0)",
         z1: "var(--z1)",
         z2: "var(--z2)",
@@ -20,8 +18,7 @@ const config: Config = {
         z5: "var(--z5)",
         z6: "var(--z6)",
         z7: "var(--z7)",
-        // T color scale
-        t0: "var(--t0)",
+        // T scale (alpha colors)
         t1: "var(--t1)",
         t2: "var(--t2)",
         t3: "var(--t3)",
@@ -40,4 +37,3 @@ const config: Config = {
   plugins: [],
 };
 export default config;
-
