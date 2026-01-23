@@ -11,9 +11,6 @@
 }
 
 :root {
-  /* Fluid typography - scales with viewport, capped at max */
-  --font-hero: min(288px, 18vw);
-
   /* Light mode - Z scale (solid colors) */
   --z0: #FFFFFF;
   --z1: #FAFAFA;
@@ -90,19 +87,19 @@ body {
     font-feature-settings: "kern" 0;
   }
 
-  /* Composite type styles */
+  /* Composite type styles - desktop first */
   .type-hero {
-    font-size: var(--font-hero);
+    font-size: 288px;
     font-weight: 500;
     line-height: 1.19;
-    letter-spacing: 0.005em;
+    letter-spacing: 1.44px;
     font-variation-settings: "opsz" 20;
     font-feature-settings: "kern" 0;
   }
 
   .type-nav {
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 450;
     line-height: 1.45;
     letter-spacing: 0.07px;
     font-variation-settings: "opsz" 20;
@@ -130,5 +127,28 @@ body {
     line-height: 1.19;
     letter-spacing: 0.1px;
     font-variation-settings: "opsz" 20;
+  }
+}
+
+/* Mobile overrides (max-width: 767px) */
+@media (max-width: 767px) {
+  .type-hero {
+    font-size: 89px;
+    letter-spacing: 0.445px;
+  }
+
+  .type-body {
+    font-size: 16px;
+    letter-spacing: 0.08px;
+  }
+
+  .type-body-medium {
+    font-size: 16px;
+    letter-spacing: 0.08px;
+  }
+
+  .type-body-book {
+    font-size: 16px;
+    letter-spacing: 0.08px;
   }
 }

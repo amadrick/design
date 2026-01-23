@@ -1,30 +1,30 @@
-import { ButtonHTMLAttributes } from "react";
+import { ReactNode } from "react";
+import Link from "next/link";
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "secondary";
-  children: React.ReactNode;
+interface ButtonProps {
+  children: ReactNode;
+  trailing?: ReactNode;
+  href?: string;
+  onClick?: () => void;
+  className?: string;
 }
 
-export function Button({
-  variant = "primary",
-  children,
-  className = "",
-  ...props
-}: ButtonProps) {
-  const baseStyles =
-    "px-6 py-3 text-sm font-medium tracking-[0.07px] leading-[1.45] rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed";
+export function Button({ children, trailing, href, onClick, className = "" }: ButtonProps) {
+  const baseStyles = "flex items-center h-7 gap-1.5 px-2.5 py-0.5 rounded-md text-sm font-medium leading-[1.45] tracking-[0.07px] opsz-20 ff-body text-t11 hover:bg-t1 hover:text-t10 transition-colors";
 
-  const variants = {
-    primary: "bg-t11 text-z0 hover:bg-t12",
-    secondary: "bg-t3 text-t11 hover:bg-t4",
-  };
+  if (href) {
+    return (
+      <Link href={href} className={`${baseStyles} ${className}`}>
+        {children}
+        {trailing}
+      </Link>
+    );
+  }
 
   return (
-    <button
-      className={`${baseStyles} ${variants[variant]} ${className}`}
-      {...props}
-    >
+    <button onClick={onClick} className={`${baseStyles} ${className}`}>
       {children}
+      {trailing}
     </button>
   );
 }

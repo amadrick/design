@@ -1,28 +1,20 @@
 import Link from "next/link";
+import { Button } from "./Button";
 
 export function Header() {
   return (
-    <header className="flex items-center justify-between px-7 py-6">
+    <header className="flex items-center justify-between pl-7 max-md:pl-5 pr-6 py-6">
       <Link
         href="/"
-        className="type-nav text-t11 hover:text-t12 transition-colors"
+        className="text-sm font-medium leading-[1.45] tracking-[0.07px] opsz-20 ff-body text-t11 hover:text-t12 transition-colors"
       >
         Andy Madrick
       </Link>
-      <nav className="flex items-center gap-6">
-        <Link
-          href="/about"
-          className="type-nav text-t8 hover:text-t11 transition-colors"
-        >
-          About
-        </Link>
-        <Link
-          href="/contact"
-          className="flex items-center gap-1.5 type-nav text-t11 hover:text-t12 transition-colors"
-        >
-          Contact
-          <span className="w-2.5 h-2.5 rounded-full bg-green-500" />
-        </Link>
+      <nav className="flex items-center">
+        <Button href="/contact">Contact</Button>
+        <div className="flex items-center justify-center size-7">
+          <span className="size-3.5 rounded-full bg-green-500" />
+        </div>
       </nav>
     </header>
   );
