@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import { Header } from "@/components/Header";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Madrick",
-  description: "",
+  title: "Andy Madrick - Designer",
+  description: "Product Designer based in Seattle. Currently at Notion.",
 };
 
 export default function RootLayout({
@@ -13,7 +14,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className="min-h-screen bg-z1">
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }
