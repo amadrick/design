@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Sans";
+  src: url("/fonts/sans-vf.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   /* Light mode - Z scale (solid colors) */
   --z0: #FFFFFF;
@@ -30,6 +38,7 @@
 
 html,
 body {
+  font-family: "Sans", system-ui, sans-serif;
   background-color: var(--z0);
 }
 
@@ -58,5 +67,88 @@ body {
     --t10: rgba(255, 255, 255, 0.75);
     --t11: rgba(255, 255, 255, 0.85);
     --t12: rgba(255, 255, 255, 0.95);
+  }
+}
+
+/* Typography utilities for variable font */
+@layer utilities {
+  /* Optical sizing - all text uses opsz 20 */
+  .opsz-20 {
+    font-variation-settings: "opsz" 20;
+  }
+
+  /* Font feature: character variants for body text */
+  .ff-body {
+    font-feature-settings: "cv10", "ss07";
+  }
+
+  /* Font feature: kerning off for display */
+  .ff-display {
+    font-feature-settings: "kern" 0;
+  }
+
+  /* Composite type styles - desktop first */
+  .type-hero {
+    font-size: 288px;
+    font-weight: 500;
+    line-height: 1.19;
+    letter-spacing: 1.44px;
+    font-variation-settings: "opsz" 20;
+    font-feature-settings: "kern" 0;
+  }
+
+  .type-nav {
+    font-size: 14px;
+    font-weight: 450;
+    line-height: 1.45;
+    letter-spacing: 0.07px;
+    font-variation-settings: "opsz" 20;
+    font-feature-settings: "cv10", "ss07";
+  }
+
+  .type-body {
+    font-size: 20px;
+    line-height: 1.19;
+    letter-spacing: 0.1px;
+    font-variation-settings: "opsz" 20;
+  }
+
+  .type-body-medium {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.19;
+    letter-spacing: 0.1px;
+    font-variation-settings: "opsz" 20;
+  }
+
+  .type-body-book {
+    font-size: 20px;
+    font-weight: 450;
+    line-height: 1.19;
+    letter-spacing: 0.1px;
+    font-variation-settings: "opsz" 20;
+  }
+}
+
+/* Mobile overrides (max-width: 767px) */
+@media (max-width: 767px) {
+  .type-hero {
+    font-size: 89px;
+    letter-spacing: 0.445px;
+  }
+
+  .type-body {
+    font-size: 16px;
+    letter-spacing: 0.08px;
+  }
+
+  .type-body-medium {
+    font-size: 16px;
+    letter-spacing: 0.08px;
+  }
+
+  .type-body-book {
+    font-size: 16px;
+    letter-spacing: 0.08px;
   }
 }

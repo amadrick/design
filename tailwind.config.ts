@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontSize: {
+        hero: "var(--font-hero)",
+      },
       colors: {
         // Z scale (solid colors)
         z0: "var(--z0)",
