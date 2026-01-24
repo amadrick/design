@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontWeight: {
+        book: "450",
+      },
       fontSize: {
         hero: "var(--font-hero)",
       },
