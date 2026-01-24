@@ -39,7 +39,7 @@
 html,
 body {
   font-family: "Sans", system-ui, sans-serif;
-  background-color: var(--z0);
+  background-color: var(--z1);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -89,10 +89,12 @@ body {
 
   /* Composite type styles - desktop first */
   .type-hero {
-    font-size: 288px;
+    /* Fluid: 89px @ 375vw → 288px @ 1440vw */
+    font-size: clamp(5.5625rem, 1.18rem + 18.69vw, 18rem);
     font-weight: 500;
     line-height: 1.19;
-    letter-spacing: 1.44px;
+    /* Fluid: 0.445px @ 375vw → 1.44px @ 1440vw */
+    letter-spacing: clamp(0.445px, 0.095px + 0.0934vw, 1.44px);
     font-variation-settings: "opsz" 20;
     font-feature-settings: "kern" 0;
   }
@@ -130,13 +132,18 @@ body {
   }
 }
 
+/* Breakpoint transition */
+.breakpoint-fade {
+  animation: breakpointFade 0.3s ease-out;
+}
+
+@keyframes breakpointFade {
+  0% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
 /* Mobile overrides (max-width: 767px) */
 @media (max-width: 767px) {
-  .type-hero {
-    font-size: 89px;
-    letter-spacing: 0.445px;
-  }
-
   .type-body {
     font-size: 16px;
     letter-spacing: 0.08px;
@@ -152,3 +159,4 @@ body {
     letter-spacing: 0.08px;
   }
 }
+
