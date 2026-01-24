@@ -144,6 +144,11 @@ body {
 
 /* Mobile overrides (max-width: 767px) */
 @media (max-width: 767px) {
+  .type-hero {
+    font-size: 89px;
+    letter-spacing: 0.445px;
+  }
+
   .type-body {
     font-size: 16px;
     letter-spacing: 0.08px;
