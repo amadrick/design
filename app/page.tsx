@@ -1,6 +1,16 @@
+import type { Metadata } from "next";
 import { WorkRow } from "@/components/WorkRow";
 import { StudyRow } from "@/components/StudyRow";
 import { BreakpointFade } from "@/components/BreakpointFade";
+
+export const metadata: Metadata = {
+  title: "Andy Madrick · Product Designer in San Francisco | Notion, Mercury, Tome",
+  description:
+    "Andy Madrick is a Product Designer based in San Francisco, currently at Notion. Previously at Tome, Lightfield, Mercury, and ProtoPie. View work experience and portfolio.",
+  alternates: {
+    canonical: "https://madrick.design",
+  },
+};
 
 export default function Home() {
   return (
