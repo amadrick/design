@@ -11,12 +11,10 @@ const config: Config = {
       fontWeight: {
         book: "450",
       },
-      fontSize: {
-        hero: "var(--font-hero)",
-      },
       colors: {
         // Z scale (solid colors)
         z0: "var(--z0)",
+        "z05": "var(--z05)",
         z1: "var(--z1)",
         z2: "var(--z2)",
         z3: "var(--z3)",

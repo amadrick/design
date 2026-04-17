@@ -1,16 +1,14 @@
-import { Button } from "./Button";
+import Link from "next/link";
 
 export function Header() {
   return (
-    <header className="flex items-center justify-between pl-7 max-md:pl-5 pr-6 py-6">
-      <span className="text-base font-book leading-[1.45] tracking-[0.07px] opsz-20 ff-body text-t11">
+    <header className="flex items-center justify-between h-[72px] px-7 max-md:px-5">
+      <Link href="/" className="type-nav text-t11 hover:text-t9 transition-colors">
         Andy Madrick
-      </span>
-      <nav className="flex items-center gap-3.5 max-md:gap-2.5">
-        <Button href="mailto:andy@madrick.design">Contact</Button>
-        <div className="flex items-center justify-center size-7">
-          <span className="size-3.5 rounded-full bg-[#49BF4C]" />
-        </div>
+      </Link>
+      <nav className="flex items-center gap-6 type-nav text-t9">
+        <a href="https://x.com/andymadrick" target="_blank" rel="noopener noreferrer" className="hover:text-t11 transition-colors">X</a>
+        <a href="https://www.linkedin.com/in/andy-madrick-67815589/" target="_blank" rel="noopener noreferrer" className="hover:text-t11 transition-colors">LinkedIn</a>
       </nav>
     </header>
   );

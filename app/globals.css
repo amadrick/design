@@ -13,6 +13,7 @@
 :root {
   /* Light mode - Z scale (solid colors) */
   --z0: #FFFFFF;
+  --z05: #FDFDFD;
   --z1: #FAFAFA;
   --z2: #F5F5F5;
   --z3: #EBEBEB;
@@ -46,6 +47,7 @@ body {
   :root {
     /* Dark mode - Z scale (solid colors) */
     --z0: #0A0A0A;
+    --z05: #0C0C0C;
     --z1: #0F0F0F;
     --z2: #141414;
     --z3: #1F1F1F;
