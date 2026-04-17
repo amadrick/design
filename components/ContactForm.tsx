@@ -1,7 +1,7 @@
 "use client";
 
 import { useFormState, useFormStatus } from "react-dom";
-import { submitContactForm, ContactFormState } from "@/app/contact/actions";
+import { submitContactForm, ContactFormState } from "@/app/(site)/contact/actions";
 import { Button } from "./Button";
 
 const initialState: ContactFormState = { success: false, error: undefined };

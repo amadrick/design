@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Header } from "@/components/Header";
 import { JsonLd } from "@/components/JsonLd";
 import "./globals.css";
 
@@ -117,7 +116,6 @@ export default function RootLayout({
         <JsonLd />
       </head>
       <body className="min-h-screen bg-z1">
-        <Header />
         {children}
       </body>
     </html>

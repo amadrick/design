@@ -1,47 +1,79 @@
 import type { Metadata } from "next";
+import { BreakpointFade } from "@/components/BreakpointFade";
+import { Breadcrumb } from "@/components/Breadcrumb";
 
 export const metadata: Metadata = {
-  title: "About Andy Madrick - Philosophy + Design | Notion, San Francisco",
+  title: "About · Andy Madrick · Product Designer",
   description:
-    "Andy Madrick is a Product Designer with a philosophy background (B.A. Philosophy, Colorado State; M. Design, UW). Currently at Notion, prev Tome (AI). His philosophy training shapes his approach to design ethics, human-AI interaction, and building thoughtful tools.",
+    "Andy Madrick is a Product Designer based in San Francisco, currently at Notion. Previously at Tome, Lightfield, Mercury, and ProtoPie. View work experience and portfolio.",
   alternates: {
     canonical: "https://madrick.design/about",
-  },
-  openGraph: {
-    title: "About Andy Madrick - Philosophy Meets Design",
-    description:
-      "Product Designer with a philosophy degree, focused on design ethics and human-centered AI. Currently at Notion in San Francisco, previously Design Engineer at Tome.",
-    url: "https://madrick.design/about",
   },
 };
 
 export default function AboutPage() {
   return (
-    <main className="px-6 pb-16 pt-12 max-w-2xl">
-      <h1 className="text-4xl font-medium text-t11 leading-[1.2] tracking-[0.2px] mb-12">
-        About
-      </h1>
+    <main className="flex flex-col gap-16 max-md:gap-10 px-7 max-md:px-5 pb-6 max-md:pb-10 overflow-clip">
+      <Breadcrumb current="About" />
 
-      <div className="flex flex-col gap-8 text-xl leading-[1.5] tracking-[0.1px]">
-        <p className="text-t11">
-          I&apos;m a product designer currently working at Notion, where I focus on
-          building tools that help people organize their thoughts and work.
-        </p>
+      {/* Hero */}
+      <section>
+        <h1 className="type-hero text-t11">
+          Designer
+        </h1>
+      </section>
 
-        <p className="text-t8">
-          Before Notion, I was a founding designer at Lightfield and worked as a
-          design engineer at Tome. I&apos;ve also spent time at Mercury and Protopie,
-          contributing to products that prioritize clarity and craft.
-        </p>
+      {/* Experience Sections */}
+      <BreakpointFade>
+        <div className="flex flex-col gap-10 max-md:gap-3 text-base leading-[1.45] tracking-[0.08px] opsz-20 ff-body font-book">
+        {/* Work */}
+        <section className="flex gap-3 max-md:flex-col">
+          <h2 className="w-[140px] text-t8 shrink-0">Work</h2>
+          <div className="flex gap-12 max-md:gap-4">
+            <div className="flex flex-col gap-1.5 max-md:gap-1 min-w-[5.5rem]">
+              <p className="py-0.5 font-medium text-t11">Notion</p>
+              <p className="py-0.5 font-medium text-t11">Lightfield</p>
+              <p className="py-0.5 font-medium text-t11">Tome</p>
+              <p className="py-0.5 font-medium text-t11">Mercury</p>
+              <p className="py-0.5 font-medium text-t11">ProtoPie</p>
+            </div>
+            <div className="flex flex-col gap-1.5 max-md:gap-1 min-w-[8.5rem]">
+              <p className="py-0.5 text-t8">Product Designer</p>
+              <p className="py-0.5 text-t8">Founding Designer</p>
+              <p className="py-0.5 text-t8">Design Engineer</p>
+              <p className="py-0.5 text-t8">Product Designer</p>
+              <p className="py-0.5 text-t8">Product Designer</p>
+            </div>
+            <div className="flex flex-col gap-1.5 max-md:gap-1">
+              <p className="py-0.5 text-t11">Current</p>
+              <p className="py-0.5 text-t11">2024-25</p>
+              <p className="py-0.5 text-t11">2023-24</p>
+              <p className="py-0.5 text-t11">2022-24</p>
+              <p className="py-0.5 text-t11">2021-22</p>
+            </div>
+          </div>
+        </section>
 
-        <p className="text-t8">
-          I studied design at the University of Washington and philosophy at
-          Colorado State University. The intersection of these fields shapes how
-          I think about the purpose and ethics of the tools we build.
-        </p>
-
-        <p className="text-t8">Based in San Francisco.</p>
-      </div>
+        {/* Study */}
+        <section className="flex gap-3 max-md:flex-col">
+          <h2 className="w-[140px] text-t8 shrink-0">Study</h2>
+          <div className="flex gap-12 max-md:gap-4">
+            <div className="flex flex-col gap-1.5 max-md:gap-1 min-w-[5.5rem]">
+              <p className="py-0.5 font-medium text-t11">Design</p>
+              <p className="py-0.5 font-medium text-t11">Philosophy</p>
+            </div>
+            <div className="flex flex-col gap-1.5 max-md:gap-1 min-w-[8.5rem]">
+              <p className="py-0.5 text-t8">UW Seattle</p>
+              <p className="py-0.5 text-t8">Colorado State</p>
+            </div>
+            <div className="flex flex-col gap-1.5 max-md:gap-1">
+              <p className="py-0.5 text-t11">M. Design</p>
+              <p className="py-0.5 text-t11">B. Arts</p>
+            </div>
+          </div>
+        </section>
+        </div>
+      </BreakpointFade>
     </main>
   );
 }
