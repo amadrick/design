@@ -103,21 +103,18 @@ export const metadata: Metadata = {
     canonical: siteUrl,
   },
   icons: {
+    // The SVG goes last with sizes="any" so Chrome and Firefox pick it over the rasters.
     icon: [
       { url: "/favicon.ico", sizes: "32x32" },
-      {
-        url: "/icon-light-32.png",
-        sizes: "32x32",
-        type: "image/png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/icon-dark-32.png",
-        sizes: "32x32",
-        type: "image/png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      { url: "/icon.svg", type: "image/svg+xml" },
+      ...[32, 64, 96].flatMap((size) =>
+        (["light", "dark"] as const).map((scheme) => ({
+          url: `/icon-${scheme}-${size}.png`,
+          sizes: `${size}x${size}`,
+          type: "image/png",
+          media: `(prefers-color-scheme: ${scheme})`,
+        })),
+      ),
+      { url: "/icon.svg", sizes: "any", type: "image/svg+xml" },
     ],
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
