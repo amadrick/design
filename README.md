@@ -26,11 +26,10 @@ npm run clean
 ## Project Structure
 
 - `app/layout.tsx` - root metadata and global shell
-- `app/(site)/layout.tsx` - shared header for home/contact routes
+- `app/(site)/layout.tsx` - shared header for the home route
 - `app/(site)/page.tsx` - home project grid
 - `app/work/[slug]/page.tsx` - project detail page
 - `app/about/page.tsx` - about page
-- `app/(site)/contact/page.tsx` - contact page
 - `components/` - shared UI and interactive components
 - `lib/projects.ts` - single source of truth for project content/order
 
