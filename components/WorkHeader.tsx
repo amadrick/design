@@ -48,7 +48,7 @@ export function WorkHeader({ title, slug, prevSlug, nextSlug }: WorkHeaderProps)
           </div>
         )}
         <Link
-          href={`/#${slug}`}
+          href={`/work#${slug}`}
           className="flex items-center justify-center size-5 rounded-[6px] hover:bg-t4 transition-colors"
           aria-label="Close"
         >

@@ -7,6 +7,7 @@ export function Header() {
         Andy Madrick
       </Link>
       <nav className="flex items-center gap-6 type-nav text-t9">
+        <Link href="/work" className="hover:text-t11 transition-colors">Work</Link>
         <a href="https://x.com/andymadrick" target="_blank" rel="noopener noreferrer" className="hover:text-t11 transition-colors">X</a>
         <a href="https://www.linkedin.com/in/andy-madrick-67815589/" target="_blank" rel="noopener noreferrer" className="hover:text-t11 transition-colors">LinkedIn</a>
       </nav>
