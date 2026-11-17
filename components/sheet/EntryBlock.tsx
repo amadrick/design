@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { TransitionLink } from "@/components/transition/TransitionLink";
 import type { Entry } from "@/lib/projects";
 import { ChangeList } from "./ChangeList";
 import { MediaFrame } from "./MediaFrame";
@@ -40,14 +40,17 @@ function Cover({ entry, priority }: EntryBlockProps) {
   if (!entry.page) return frame;
 
   return (
-    <Link
+    <TransitionLink
       href={`/work/${entry.slug}`}
+      transition="open"
+      slug={entry.slug}
+      data-vt-cover={entry.slug}
       aria-label={`${entry.title}, open case study`}
       className="group relative block rounded-xl max-md:rounded-lg"
     >
       {frame}
       <span className="pointer-events-none absolute inset-0 rounded-xl max-md:rounded-lg bg-t1 opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
-    </Link>
+    </TransitionLink>
   );
 }
 

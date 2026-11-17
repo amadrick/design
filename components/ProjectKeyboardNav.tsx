@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { navigateWithTransition } from "@/components/transition/viewTransition";
 
 interface ProjectKeyboardNavProps {
   prevSlug: string | null;
@@ -12,14 +13,19 @@ export function ProjectKeyboardNav({ prevSlug, nextSlug }: ProjectKeyboardNavPro
   const router = useRouter();
 
   useEffect(() => {
+    function go(href: string) {
+      const push = (to: string) => router.push(to);
+      if (!navigateWithTransition({ href, kind: "step", navigate: push })) push(href);
+    }
+
     function handleKey(e: KeyboardEvent) {
       if (e.key === "ArrowUp" && prevSlug) {
         e.preventDefault();
-        router.push(`/work/${prevSlug}`);
+        go(`/work/${prevSlug}`);
       }
       if (e.key === "ArrowDown" && nextSlug) {
         e.preventDefault();
-        router.push(`/work/${nextSlug}`);
+        go(`/work/${nextSlug}`);
       }
     }
     window.addEventListener("keydown", handleKey);

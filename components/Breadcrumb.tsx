@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import Link from "next/link";
+import { TransitionLink } from "@/components/transition/TransitionLink";
 
 interface BreadcrumbProps {
   current: ReactNode;
@@ -14,9 +14,9 @@ function joinClasses(...classes: Array<string | false | undefined>) {
 export function Breadcrumb({ current, truncateCurrent = false, className }: BreadcrumbProps) {
   return (
     <div className={joinClasses("flex items-center gap-2 type-nav text-t11 min-w-0", className)}>
-      <Link href="/" className="hover:text-t9 transition-colors shrink-0">
+      <TransitionLink href="/" transition="fade" className="hover:text-t9 transition-colors shrink-0">
         Andy Madrick
-      </Link>
+      </TransitionLink>
       <svg width="4" height="14" viewBox="0 0 4 14" fill="none" className="shrink-0">
         <line
           x1="3.5"

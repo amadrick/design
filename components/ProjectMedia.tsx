@@ -25,6 +25,7 @@ export function ProjectMedia({
 }: ProjectMediaProps) {
   return (
     <div
+      data-vt-media
       className={joinClasses(
         "aspect-video bg-z0 overflow-hidden relative w-full",
         containerClassName

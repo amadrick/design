@@ -357,3 +357,55 @@ html {
     opacity: 0;
   }
 }
+
+/* ==========================================================================
+   View transitions (components/transition)
+   Root crossfades; the one shared "case-media" frame morphs between a cover
+   on the sheet and the media on a case study. Set only while a transition
+   runs (html[data-vt]); nothing here applies at rest.
+   ========================================================================== */
+
+html[data-vt]::view-transition-old(root),
+html[data-vt]::view-transition-new(root) {
+  animation-duration: 220ms;
+  animation-timing-function: var(--ease-in-out);
+}
+
+html[data-vt="step"]::view-transition-old(root),
+html[data-vt="step"]::view-transition-new(root) {
+  animation-duration: 160ms;
+}
+
+html[data-vt]::view-transition-group(case-media) {
+  animation-duration: 420ms;
+  animation-timing-function: var(--ease-in-out);
+}
+
+/* The box clips, so a 3:2 cover and a 16:9 frame trade places without stretching. */
+html[data-vt]::view-transition-image-pair(case-media) {
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+html[data-vt]::view-transition-old(case-media),
+html[data-vt]::view-transition-new(case-media) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation-duration: 420ms;
+  animation-timing-function: var(--ease-in-out);
+}
+
+@media (max-width: 767px) {
+  html[data-vt]::view-transition-image-pair(case-media) {
+    border-radius: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
