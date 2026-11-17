@@ -1,72 +1,80 @@
 import type { Metadata } from "next";
-import { entryList, releases } from "@/lib/projects";
+import { hasPage, releases } from "@/lib/projects";
 import { ScrollToHash } from "@/components/ScrollToHash";
-import { Colophon } from "@/components/sheet/Colophon";
-import { ReleaseSection } from "@/components/sheet/ReleaseSection";
-import { SheetKeys } from "@/components/sheet/SheetKeys";
+import { ProjectCaption } from "@/components/ProjectCaption";
+import { ProjectMedia } from "@/components/ProjectMedia";
+import { TransitionLink } from "@/components/transition/TransitionLink";
 
 export const metadata: Metadata = {
   title: "Andy Madrick · Product Designer in San Francisco | Anthropic, Notion, Mercury",
   description:
-    "Andy Madrick is a Product Designer based in San Francisco, currently at Anthropic working on Claude Code. Previously at SpaceX, Cursor, Notion, Lightfield, and Mercury. A changelog of the work.",
+    "Andy Madrick is a Product Designer based in San Francisco, currently at Anthropic working on Claude Code. Previously at SpaceX, Cursor, Notion, Lightfield, and Mercury. View work experience and portfolio.",
   alternates: {
     canonical: "https://madrick.design",
   },
 };
 
-function Company({ id, children }: { id: string; children: React.ReactNode }) {
-  return (
-    <a
-      href={`#${id}`}
-      className="text-t12 underline decoration-transparent decoration-1 underline-offset-[5px] transition-colors duration-200 hover:decoration-t6"
-    >
-      {children}
-    </a>
-  );
+/** A release that ends in media needs more room after it than one that ends in a line of text. */
+function followsMedia(index: number) {
+  const previous = releases[index - 1];
+  return Boolean(previous && previous.projects.some(hasPage));
 }
 
 export default function Home() {
   return (
-    <main className="px-7 max-md:px-5">
+    <main className="px-7 max-md:px-5 mt-10 max-md:mt-6 pb-24 max-md:pb-16">
       <ScrollToHash />
-      <SheetKeys />
-      <div className="mx-auto max-w-[1128px]">
-        {/* Statement */}
-        <section className="sheet-grid pt-14 pb-20 max-md:pt-6 max-md:pb-12">
-          <p className="type-small text-t8 md:pt-[7px] max-md:hidden">
-            Product Designer
-            <br />
-            San Francisco
-          </p>
-          <h1 className="type-intro text-t8 max-w-[660px]">
-            <span className="text-t12">I&apos;m a product designer who builds.</span> Right now
-            I&apos;m at <Company id="anthropic">Anthropic</Company>, working on Claude Code. Before
-            that I redesigned grok.com at <Company id="spacex">SpaceX</Company>, shipped a few
-            things at <Company id="cursor">Cursor</Company>, designed Meeting Notes and credits at{" "}
-            <Company id="notion">Notion</Company>, was the founding designer at{" "}
-            <Company id="lightfield">Lightfield</Company>, and launched personal banking at{" "}
-            <Company id="mercury">Mercury</Company>.
-          </h1>
-        </section>
-
-        {/* Changelog */}
-        <div className="sheet-grid max-md:flex max-md:items-baseline max-md:justify-between pb-4 max-md:pb-3 type-meta text-t8">
-          <p>changelog</p>
-          <p className="flex items-center justify-between gap-4">
-            <span>{entryList.length} entries, newest first</span>
-            <span className="flex items-center gap-1.5 max-md:hidden" aria-hidden="true">
-              <kbd className="keycap">J</kbd>
-              <kbd className="keycap">K</kbd>
-              <span className="ml-1">to step</span>
-            </span>
-          </p>
-        </div>
-
+      <h1 className="sr-only">Andy Madrick, Product Designer</h1>
+      <div className="flex flex-col max-w-[940px] mx-auto">
         {releases.map((release, i) => (
-          <ReleaseSection key={release.id} release={release} first={i === 0} />
-        ))}
+          <section
+            key={release.id}
+            id={release.id}
+            className={`flex flex-col gap-6 ${
+              i === 0 ? "" : followsMedia(i) ? "mt-[120px] max-md:mt-20" : "mt-[72px] max-md:mt-12"
+            }`}
+          >
+            <header className="flex gap-12 max-md:gap-4 text-base leading-[1.45] tracking-[0.08px] opsz-20 ff-body font-book">
+              <h2 className="w-[5.5rem] shrink-0 font-medium text-t11">{release.company}</h2>
+              {release.role && <p className="w-[8.5rem] shrink-0 text-t8">{release.role}</p>}
+              {release.period && <p className="text-t11">{release.period}</p>}
+            </header>
 
-        <Colophon />
+            <div className="flex flex-col gap-14 max-md:gap-10">
+              {release.projects.map((project) => (
+                <article key={project.slug} id={project.slug} className="flex flex-col gap-4">
+                  <ProjectCaption
+                    as="h3"
+                    title={project.title}
+                    description={project.description}
+                  />
+                  {hasPage(project) && (
+                    <TransitionLink
+                      href={`/work/${project.slug}`}
+                      transition="open"
+                      slug={project.slug}
+                      data-vt-cover={project.slug}
+                      aria-label={`${project.title}, open case study`}
+                      className="group rounded-xl overflow-hidden relative block"
+                    >
+                      <ProjectMedia
+                        image={project.image}
+                        video={project.video}
+                        poster={project.poster}
+                        alt={project.title}
+                        containerClassName="rounded-xl"
+                        showBorder={false}
+                        transitionTarget={false}
+                      />
+                      <div className="absolute inset-0 bg-t1 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <div className="absolute inset-0 rounded-xl border-[0.5px] border-t2 pointer-events-none" />
+                    </TransitionLink>
+                  )}
+                </article>
+              ))}
+            </div>
+          </section>
+        ))}
       </div>
     </main>
   );

@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getEntryBySlug, getProjectBySlug, getProjectNav, projectList } from "@/lib/projects";
+import { getProjectBySlug, getProjectNav, projectList } from "@/lib/projects";
 import { WorkHeader } from "@/components/WorkHeader";
 import { ImageCarousel } from "@/components/ImageCarousel";
 import { ProjectKeyboardNav } from "@/components/ProjectKeyboardNav";
 import { ProjectMedia } from "@/components/ProjectMedia";
 import { ProjectCaption } from "@/components/ProjectCaption";
-import { ChangeList } from "@/components/sheet/ChangeList";
 
 export function generateStaticParams() {
   return projectList.map((p) => ({ slug: p.slug }));
@@ -40,40 +39,33 @@ export default async function WorkDetailPage({
   const carouselImages = project.images ?? [];
   const hasCarousel = carouselImages.length > 0;
 
-  const changes = getEntryBySlug(slug)?.changes;
-  const aside = changes?.length ? (
-    <div className="w-full max-w-[400px] -mt-2 max-md:mt-0">
-      <ChangeList changes={changes} />
-    </div>
-  ) : null;
-
   return (
     <>
       <ProjectKeyboardNav prevSlug={prev} nextSlug={next} />
       <WorkHeader title={project.title} slug={slug} prevSlug={prev} nextSlug={next} />
-      <main className="px-7 max-md:px-5 mt-10 max-md:mt-6 pb-16">
+      <main className="px-7 max-md:px-5 mt-10 max-md:mt-6">
         <div className="flex flex-col gap-8 max-w-[940px] mx-auto">
           {hasCarousel ? (
             <ImageCarousel
               images={carouselImages}
               alt={project.title}
               video={project.video}
+              poster={project.poster}
               title={project.title}
               description={project.description}
-              aside={aside}
             />
           ) : (
             <>
               <ProjectMedia
                 image={project.image}
                 video={project.video}
+                poster={project.poster}
                 alt={project.title}
                 containerClassName="rounded-xl max-md:rounded-lg"
                 borderClassName="rounded-xl max-md:rounded-lg"
               />
-              <div className="flex items-start gap-x-12 max-md:flex-col max-md:gap-4">
+              <div className="flex items-start max-md:flex-col max-md:gap-4">
                 <ProjectCaption title={project.title} description={project.description} />
-                {aside}
               </div>
             </>
           )}

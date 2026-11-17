@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { GeistMono } from "geist/font/mono";
 import { JsonLd } from "@/components/JsonLd";
 import "./globals.css";
 
@@ -116,7 +115,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={GeistMono.variable}>
+    <html lang="en">
       <head>
         <JsonLd />
       </head>
