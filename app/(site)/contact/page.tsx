@@ -4,14 +4,14 @@ import { ContactForm } from "@/components/ContactForm";
 export const metadata: Metadata = {
   title: "Contact Andy Madrick - Product Designer in San Francisco",
   description:
-    "Get in touch with Andy Madrick, Product Designer at Notion. Available for design collaborations, speaking opportunities, and project inquiries.",
+    "Get in touch with Andy Madrick, Product Designer at Anthropic. Available for design collaborations, speaking opportunities, and project inquiries.",
   alternates: {
     canonical: "https://madrick.design/contact",
   },
   openGraph: {
     title: "Contact Andy Madrick",
     description:
-      "Get in touch with Andy Madrick, Product Designer at Notion in San Francisco.",
+      "Get in touch with Andy Madrick, Product Designer at Anthropic in San Francisco.",
     url: "https://madrick.design/contact",
   },
 };

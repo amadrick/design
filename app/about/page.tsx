@@ -1,11 +1,37 @@
 import type { Metadata } from "next";
 import { BreakpointFade } from "@/components/BreakpointFade";
 import { Breadcrumb } from "@/components/Breadcrumb";
+import { experience, education, type Role } from "@/lib/projects";
+
+function RoleTable({ title, rows }: { title: string; rows: Role[] }) {
+  return (
+    <section className="flex gap-3 max-md:flex-col">
+      <h2 className="w-[140px] text-t8 shrink-0">{title}</h2>
+      <div className="flex gap-12 max-md:gap-4">
+        <div className="flex flex-col gap-1.5 max-md:gap-1 min-w-[5.5rem]">
+          {rows.map((r) => (
+            <p key={r.company} className="py-0.5 font-medium text-t11">{r.company}</p>
+          ))}
+        </div>
+        <div className="flex flex-col gap-1.5 max-md:gap-1 min-w-[8.5rem]">
+          {rows.map((r) => (
+            <p key={r.company} className="py-0.5 text-t8">{r.role}</p>
+          ))}
+        </div>
+        <div className="flex flex-col gap-1.5 max-md:gap-1">
+          {rows.map((r) => (
+            <p key={r.company} className="py-0.5 text-t11">{r.period}</p>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
 
 export const metadata: Metadata = {
   title: "About · Andy Madrick · Product Designer",
   description:
-    "Andy Madrick is a Product Designer based in San Francisco, currently at Notion. Previously at Tome, Lightfield, Mercury, and ProtoPie. View work experience and portfolio.",
+    "Andy Madrick is a Product Designer based in San Francisco, currently at Anthropic working on Claude Code. Previously at SpaceX, Cursor, Notion, Lightfield, Tome, Mercury, and ProtoPie. View work experience and portfolio.",
   alternates: {
     canonical: "https://madrick.design/about",
   },
@@ -26,52 +52,8 @@ export default function AboutPage() {
       {/* Experience Sections */}
       <BreakpointFade>
         <div className="flex flex-col gap-10 max-md:gap-3 text-base leading-[1.45] tracking-[0.08px] opsz-20 ff-body font-book">
-        {/* Work */}
-        <section className="flex gap-3 max-md:flex-col">
-          <h2 className="w-[140px] text-t8 shrink-0">Work</h2>
-          <div className="flex gap-12 max-md:gap-4">
-            <div className="flex flex-col gap-1.5 max-md:gap-1 min-w-[5.5rem]">
-              <p className="py-0.5 font-medium text-t11">Notion</p>
-              <p className="py-0.5 font-medium text-t11">Lightfield</p>
-              <p className="py-0.5 font-medium text-t11">Tome</p>
-              <p className="py-0.5 font-medium text-t11">Mercury</p>
-              <p className="py-0.5 font-medium text-t11">ProtoPie</p>
-            </div>
-            <div className="flex flex-col gap-1.5 max-md:gap-1 min-w-[8.5rem]">
-              <p className="py-0.5 text-t8">Product Designer</p>
-              <p className="py-0.5 text-t8">Founding Designer</p>
-              <p className="py-0.5 text-t8">Design Engineer</p>
-              <p className="py-0.5 text-t8">Product Designer</p>
-              <p className="py-0.5 text-t8">Product Designer</p>
-            </div>
-            <div className="flex flex-col gap-1.5 max-md:gap-1">
-              <p className="py-0.5 text-t11">Current</p>
-              <p className="py-0.5 text-t11">2024-25</p>
-              <p className="py-0.5 text-t11">2023-24</p>
-              <p className="py-0.5 text-t11">2022-24</p>
-              <p className="py-0.5 text-t11">2021-22</p>
-            </div>
-          </div>
-        </section>
-
-        {/* Study */}
-        <section className="flex gap-3 max-md:flex-col">
-          <h2 className="w-[140px] text-t8 shrink-0">Study</h2>
-          <div className="flex gap-12 max-md:gap-4">
-            <div className="flex flex-col gap-1.5 max-md:gap-1 min-w-[5.5rem]">
-              <p className="py-0.5 font-medium text-t11">Design</p>
-              <p className="py-0.5 font-medium text-t11">Philosophy</p>
-            </div>
-            <div className="flex flex-col gap-1.5 max-md:gap-1 min-w-[8.5rem]">
-              <p className="py-0.5 text-t8">UW Seattle</p>
-              <p className="py-0.5 text-t8">Colorado State</p>
-            </div>
-            <div className="flex flex-col gap-1.5 max-md:gap-1">
-              <p className="py-0.5 text-t11">M. Design</p>
-              <p className="py-0.5 text-t11">B. Arts</p>
-            </div>
-          </div>
-        </section>
+        <RoleTable title="Work" rows={experience} />
+        <RoleTable title="Study" rows={education} />
         </div>
       </BreakpointFade>
     </main>

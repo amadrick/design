@@ -6,6 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
+        disallow: "/lab",
       },
     ],
     sitemap: "https://madrick.design/sitemap.xml",

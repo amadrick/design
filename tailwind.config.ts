@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        mono: ["var(--font-geist-mono)", "ui-monospace", "SF Mono", "Menlo", "monospace"],
+      },
       fontWeight: {
         book: "450",
       },
@@ -35,6 +38,12 @@ const config: Config = {
         t10: "var(--t10)",
         t11: "var(--t11)",
         t12: "var(--t12)",
+        // The one accent
+        accent: "var(--accent)",
+        "accent-soft": "var(--accent-soft)",
+      },
+      transitionTimingFunction: {
+        out: "cubic-bezier(0.2, 0.8, 0.2, 1)",
       },
     },
   },

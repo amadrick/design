@@ -11,12 +11,11 @@ export const structuredData = {
       image: "https://madrick.design/og-image.png",
       jobTitle: ["Product Designer", "Design Engineer"],
       description:
-        "Product Designer and Design Engineer with a philosophy background (B.A. Philosophy, Colorado State). Currently at Notion, previously Design Engineer at Tome (AI). Philosophy shapes his approach to design ethics, human-AI interaction, and building tools that respect how people think and work.",
+        "Product Designer and Design Engineer with a philosophy background (B.A. Philosophy, Colorado State). Currently at Anthropic working on Claude Code, previously SpaceX, Cursor, Notion, Lightfield, and Mercury. Philosophy shapes his approach to design ethics, human-AI interaction, and building tools that respect how people think and work.",
       worksFor: {
         "@type": "Organization",
-        name: "Notion",
-        url: "https://notion.so",
-        description: "Connected workspace for docs, wikis, and projects",
+        name: "Anthropic",
+        url: "https://www.anthropic.com",
       },
       hasOccupation: [
         {
@@ -53,18 +52,49 @@ export const structuredData = {
           "@type": "OrganizationRole",
           memberOf: {
             "@type": "Organization",
+            name: "Anthropic",
+            url: "https://www.anthropic.com",
+          },
+          roleName: "Product Designer",
+          startDate: "2026",
+        },
+        {
+          "@type": "OrganizationRole",
+          memberOf: {
+            "@type": "Organization",
+            name: "SpaceX",
+          },
+          roleName: "Product Designer",
+          startDate: "2026",
+          endDate: "2026",
+        },
+        {
+          "@type": "OrganizationRole",
+          memberOf: {
+            "@type": "Organization",
+            name: "Cursor",
+          },
+          roleName: "Product Designer",
+          startDate: "2026",
+          endDate: "2026",
+        },
+        {
+          "@type": "OrganizationRole",
+          memberOf: {
+            "@type": "Organization",
             name: "Notion",
             url: "https://notion.so",
           },
           roleName: "Product Designer",
-          startDate: "2024",
+          startDate: "2025",
+          endDate: "2026",
         },
         {
           "@type": "OrganizationRole",
           memberOf: {
             "@type": "Organization",
             name: "Lightfield",
-            description: "Early-stage startup",
+            description: "AI CRM",
           },
           roleName: "Founding Designer",
           startDate: "2024",
@@ -79,7 +109,7 @@ export const structuredData = {
             description: "AI-powered storytelling and presentation platform",
           },
           roleName: "Design Engineer",
-          startDate: "2024",
+          startDate: "2023",
           endDate: "2024",
         },
         {
@@ -182,7 +212,7 @@ export const structuredData = {
       url: "https://madrick.design",
       name: "Andy Madrick - Product Designer & Design Engineer",
       description:
-        "Portfolio of Andy Madrick, Product Designer and Design Engineer in San Francisco. Currently at Notion, previously Design Engineer at Tome (AI), Founding Designer at Lightfield, and Product Designer at Mercury and ProtoPie.",
+        "Portfolio of Andy Madrick, Product Designer and Design Engineer in San Francisco. Currently at Anthropic working on Claude Code, previously SpaceX, Cursor, Notion, Lightfield, and Mercury.",
       publisher: {
         "@id": "https://madrick.design/#person",
       },

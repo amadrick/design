@@ -33,6 +33,7 @@ export function ProjectMedia({
       {video ? (
         <video
           src={video}
+          poster={image}
           autoPlay
           muted
           loop

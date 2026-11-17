@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import { ProjectCaption } from "@/components/ProjectCaption";
 import { ProjectMedia } from "@/components/ProjectMedia";
 
@@ -10,9 +10,11 @@ interface ImageCarouselProps {
   video?: string;
   title: string;
   description: string;
+  /** Sits between the caption and the dots: the "what I did" lines. */
+  aside?: ReactNode;
 }
 
-export function ImageCarousel({ images, alt, video, title, description }: ImageCarouselProps) {
+export function ImageCarousel({ images, alt, video, title, description, aside }: ImageCarouselProps) {
   const [current, setCurrent] = useState(0);
   const currentRef = useRef(0);
   const total = images.length;
@@ -46,10 +48,11 @@ export function ImageCarousel({ images, alt, video, title, description }: ImageC
         containerClassName="rounded-xl max-md:rounded-lg"
         borderClassName="rounded-xl max-md:rounded-lg"
       />
-      <div className="flex items-start justify-between max-md:flex-col max-md:gap-4">
+      <div className="flex items-start gap-x-12 max-md:flex-col max-md:gap-4">
         <ProjectCaption title={title} description={description} />
+        {aside}
         {total > 1 && (
-          <div className="flex items-center gap-2 mt-0.5">
+          <div className="flex items-center gap-2 mt-1.5 ml-auto max-md:ml-0 max-md:order-first">
             {images.map((_, i) => (
               <button
                 key={i}

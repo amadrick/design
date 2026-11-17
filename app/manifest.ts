@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Andy Madrick - Product Designer",
     short_name: "Andy Madrick",
     description:
-      "Product Designer & Design Engineer in San Francisco. Currently at Notion, previously Design Engineer at Tome (AI). Specializing in complex systems and thoughtful product design.",
+      "Product Designer & Design Engineer in San Francisco. Currently at Anthropic working on Claude Code, previously SpaceX, Cursor, Notion, Lightfield, and Mercury. Specializing in complex systems and thoughtful product design.",
     start_url: "/",
     display: "standalone",
     background_color: "#ffffff",

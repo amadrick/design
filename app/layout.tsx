@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { GeistMono } from "geist/font/mono";
 import { JsonLd } from "@/components/JsonLd";
 import "./globals.css";
 
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
     template: "%s | Andy Madrick",
   },
   description:
-    "Andy Madrick is a Product Designer and Design Engineer in San Francisco with a background in philosophy. Currently at Notion, previously Design Engineer at Tome (AI). Philosophy informs his approach to design ethics and building thoughtful, human-centered tools.",
+    "Andy Madrick is a Product Designer and Design Engineer in San Francisco with a background in philosophy. Currently at Anthropic working on Claude Code, previously SpaceX, Cursor, Notion, Lightfield, and Mercury. Philosophy informs his approach to design ethics and building thoughtful, human-centered tools.",
   keywords: [
     "Andy Madrick",
     "Product Designer",
@@ -19,6 +20,10 @@ export const metadata: Metadata = {
     "San Francisco Designer",
     "Bay Area Designer",
     // Company keywords
+    "Anthropic Designer",
+    "Claude Code",
+    "SpaceX Designer",
+    "Cursor Designer",
     "Notion Designer",
     "Mercury Designer",
     "Tome Designer",
@@ -70,7 +75,7 @@ export const metadata: Metadata = {
     siteName: "Andy Madrick",
     title: "Andy Madrick · Product Designer in San Francisco",
     description:
-      "Product Designer & Design Engineer with a philosophy background. Currently at Notion, previously at Tome (AI). Focused on design ethics, human-centered AI, and building tools that respect how people think.",
+      "Product Designer & Design Engineer with a philosophy background. Currently at Anthropic working on Claude Code, previously SpaceX, Cursor, Notion, Lightfield, and Mercury. Focused on design ethics, human-centered AI, and building tools that respect how people think.",
     images: [
       {
         url: "/og-image.png",
@@ -84,7 +89,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Andy Madrick · Product Designer & Design Engineer",
     description:
-      "Philosophy grad turned Product Designer. At Notion, prev Tome (AI). Thinking about design ethics, human-AI interaction, and tools that respect how people think.",
+      "Philosophy grad turned Product Designer. At Anthropic on Claude Code, prev SpaceX, Cursor, Notion. Thinking about design ethics, human-AI interaction, and tools that respect how people think.",
     images: ["/og-image.png"],
     creator: "@andymadrick",
   },
@@ -111,7 +116,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={GeistMono.variable}>
       <head>
         <JsonLd />
       </head>

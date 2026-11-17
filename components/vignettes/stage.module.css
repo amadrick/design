@@ -1,0 +1,37 @@
+/* The frame fills its parent (the media frame owns aspect ratio, radius, border). */
+.frame {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  container-type: inline-size;
+  background-color: var(--z2);
+  user-select: none;
+  -webkit-user-select: none;
+  pointer-events: none;
+}
+
+/*
+ * A fixed 960 x 600 canvas, scaled to the frame's width.
+ * Before hydration the scale comes from CSS alone: tan(atan2(a, b)) is the
+ * unitless ratio a / b. After hydration a ResizeObserver sets --vg-scale.
+ */
+.canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 960px;
+  height: 600px;
+  transform-origin: 0 0;
+  transform: scale(var(--vg-scale, tan(atan2(100cqw, 960px))));
+  font-family: "Sans", system-ui, sans-serif;
+  font-variation-settings: "opsz" 20;
+  font-feature-settings: "cv10", "ss07";
+  color: var(--t11);
+}
+
+/* Off screen, in a hidden tab, or before hydration: hold every animation. */
+.frame[data-active="false"] *,
+.frame[data-active="false"] *::before,
+.frame[data-active="false"] *::after {
+  animation-play-state: paused !important;
+}

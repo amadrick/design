@@ -11,65 +11,118 @@
 }
 
 :root {
-  /* Light mode - Z scale (solid colors) */
-  --z0: #FFFFFF;
-  --z05: #FDFDFD;
-  --z1: #FAFAFA;
-  --z2: #F5F5F5;
-  --z3: #EBEBEB;
-  --z4: #DBDBDB;
-  --z5: #A3A3A3;
-  --z6: #666666;
-  --z7: #292929;
+  /* Ink: the single colour every alpha step is cut from */
+  --ink: 31 30 26;
 
-  /* Light mode - T scale (black with alpha) */
-  --t1: rgba(0, 0, 0, 0.04);
-  --t2: rgba(0, 0, 0, 0.06);
-  --t3: rgba(0, 0, 0, 0.08);
-  --t4: rgba(0, 0, 0, 0.12);
-  --t5: rgba(0, 0, 0, 0.16);
-  --t6: rgba(0, 0, 0, 0.25);
-  --t7: rgba(0, 0, 0, 0.35);
-  --t8: rgba(0, 0, 0, 0.50);
-  --t9: rgba(0, 0, 0, 0.60);
-  --t10: rgba(0, 0, 0, 0.75);
-  --t11: rgba(0, 0, 0, 0.85);
-  --t12: rgba(0, 0, 0, 0.95);
+  /* Light mode - Z scale (solid, warm neutral) */
+  --z0: #FFFFFF;
+  --z05: #FDFDFC;
+  --z1: #FAFAF8;
+  --z2: #F4F4F1;
+  --z3: #EBEAE6;
+  --z4: #DCDBD6;
+  --z5: #A4A39D;
+  --z6: #676660;
+  --z7: #2A2925;
+
+  /* Light mode - T scale (ink with alpha) */
+  --t1: rgb(var(--ink) / 0.04);
+  --t2: rgb(var(--ink) / 0.06);
+  --t3: rgb(var(--ink) / 0.08);
+  --t4: rgb(var(--ink) / 0.12);
+  --t5: rgb(var(--ink) / 0.16);
+  --t6: rgb(var(--ink) / 0.25);
+  --t7: rgb(var(--ink) / 0.35);
+  --t8: rgb(var(--ink) / 0.5);
+  --t9: rgb(var(--ink) / 0.6);
+  --t10: rgb(var(--ink) / 0.75);
+  --t11: rgb(var(--ink) / 0.85);
+  --t12: rgb(var(--ink) / 0.95);
+
+  /* The one accent: the green dot. Reserved for "now". */
+  --accent: #49BF4C;
+  --accent-soft: rgb(73 191 76 / 0.16);
+
+  /* Added / removed, for diffs inside vignettes only */
+  --add: #2F8A3B;
+  --add-soft: rgb(73 191 76 / 0.1);
+  --del: #B4493C;
+  --del-soft: rgb(214 92 76 / 0.085);
+
+  /* Elevation for a window sitting on a stage */
+  --shadow-window: 0 0 0 0.5px rgb(var(--ink) / 0.1), 0 1px 2px rgb(var(--ink) / 0.04),
+    0 16px 40px -16px rgb(var(--ink) / 0.14);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: 250 249 245;
+
+    /* Dark mode - Z scale (solid, warm neutral) */
+    --z0: #0B0B0A;
+    --z05: #0D0D0C;
+    --z1: #10100F;
+    --z2: #161615;
+    --z3: #20201E;
+    --z4: #2A2A28;
+    --z5: #343432;
+    --z6: #3E3E3B;
+    --z7: #A8A7A2;
+
+    /* Dark mode - T scale (ink with alpha) */
+    --t1: rgb(var(--ink) / 0.04);
+    --t2: rgb(var(--ink) / 0.08);
+    --t3: rgb(var(--ink) / 0.12);
+    --t4: rgb(var(--ink) / 0.16);
+    --t5: rgb(var(--ink) / 0.2);
+    --t6: rgb(var(--ink) / 0.3);
+    --t7: rgb(var(--ink) / 0.35);
+    --t8: rgb(var(--ink) / 0.5);
+    --t9: rgb(var(--ink) / 0.6);
+    --t10: rgb(var(--ink) / 0.75);
+    --t11: rgb(var(--ink) / 0.85);
+    --t12: rgb(var(--ink) / 0.95);
+
+    --accent: #55C958;
+    --accent-soft: rgb(85 201 88 / 0.18);
+
+    --add: #6FCF74;
+    --add-soft: rgb(85 201 88 / 0.14);
+    --del: #E08173;
+    --del-soft: rgb(224 129 115 / 0.13);
+
+    --shadow-window: 0 0 0 0.5px rgb(var(--ink) / 0.14), 0 1px 2px rgb(0 0 0 / 0.3),
+      0 16px 40px -16px rgb(0 0 0 / 0.6);
+  }
 }
 
 html,
 body {
   font-family: "Sans", system-ui, sans-serif;
   background-color: var(--z1);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Dark mode - Z scale (solid colors) */
-    --z0: #0A0A0A;
-    --z05: #0C0C0C;
-    --z1: #0F0F0F;
-    --z2: #141414;
-    --z3: #1F1F1F;
-    --z4: #292929;
-    --z5: #333333;
-    --z6: #3D3D3D;
-    --z7: #A6A6A6;
+html {
+  scroll-padding-top: 88px;
+}
 
-    /* Dark mode - T scale (white with alpha) */
-    --t1: rgba(255, 255, 255, 0.04);
-    --t2: rgba(255, 255, 255, 0.08);
-    --t3: rgba(255, 255, 255, 0.12);
-    --t4: rgba(255, 255, 255, 0.16);
-    --t5: rgba(255, 255, 255, 0.20);
-    --t6: rgba(255, 255, 255, 0.30);
-    --t7: rgba(255, 255, 255, 0.35);
-    --t8: rgba(255, 255, 255, 0.50);
-    --t9: rgba(255, 255, 255, 0.60);
-    --t10: rgba(255, 255, 255, 0.75);
-    --t11: rgba(255, 255, 255, 0.85);
-    --t12: rgba(255, 255, 255, 0.95);
-  }
+::selection {
+  background-color: var(--t4);
+}
+
+:focus-visible {
+  outline: 1.5px solid var(--t9);
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 
 /* Typography utilities for variable font */
@@ -132,6 +185,61 @@ body {
     letter-spacing: 0.1px;
     font-variation-settings: "opsz" 20;
   }
+
+  /* --- Changelog sheet --------------------------------------------------- */
+
+  /* The opening statement. Large enough to read as a statement, not a hero. */
+  .type-intro {
+    font-size: 26px;
+    font-weight: 450;
+    line-height: 1.32;
+    letter-spacing: -0.009em;
+    font-variation-settings: "opsz" 28;
+    font-feature-settings: "cv10", "ss07";
+    text-wrap: pretty;
+  }
+
+  /* Entry titles */
+  .type-title {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: -0.012em;
+    font-variation-settings: "opsz" 24;
+    font-feature-settings: "cv10", "ss07";
+  }
+
+  /* Running text */
+  .type-text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: -0.003em;
+    font-variation-settings: "opsz" 20;
+    font-feature-settings: "cv10", "ss07";
+    text-wrap: pretty;
+  }
+
+  /* Small text: change lines, captions, index rows */
+  .type-small {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0.07px;
+    font-variation-settings: "opsz" 20;
+    font-feature-settings: "cv10", "ss07";
+  }
+
+  /* Metadata: dates, verbs, keys. The only place mono appears. */
+  .type-meta {
+    font-family: var(--font-geist-mono), ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0;
+    font-feature-settings: "zero" 0, "ss01";
+    font-variant-numeric: tabular-nums;
+  }
 }
 
 /* Breakpoint transition */
@@ -165,5 +273,87 @@ body {
     font-size: 16px;
     letter-spacing: 0.08px;
   }
+
+  .type-intro {
+    font-size: 21px;
+    line-height: 1.32;
+    letter-spacing: -0.01em;
+  }
+
+  .type-title {
+    font-size: 18px;
+  }
 }
 
+/* --- Changelog sheet ------------------------------------------------------- */
+
+/* A margin for labels, a column for content. Every row of the sheet uses it. */
+.sheet-grid {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  column-gap: 48px;
+  row-gap: 24px;
+}
+
+@media (max-width: 1023px) {
+  .sheet-grid {
+    grid-template-columns: 148px minmax(0, 1fr);
+    column-gap: 32px;
+  }
+}
+
+@media (max-width: 767px) {
+  .sheet-grid {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 20px;
+  }
+}
+
+/* Keyboard hint */
+.keycap {
+  display: inline-grid;
+  place-items: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 4px;
+  border: 0.5px solid var(--t5);
+  background-color: var(--z0);
+  font: inherit;
+  font-size: 10.5px;
+  line-height: 1;
+  color: var(--t9);
+}
+
+/* The green dot: a still core and one slow ring. */
+.now-dot {
+  position: relative;
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  flex: none;
+}
+
+.now-dot-core,
+.now-dot-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background-color: var(--accent);
+}
+
+.now-dot-ring {
+  animation: nowRing 2.8s var(--ease-out) infinite;
+}
+
+@keyframes nowRing {
+  0% { transform: scale(1); opacity: 0.45; }
+  70%, 100% { transform: scale(2.6); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .now-dot-ring {
+    animation: none;
+    opacity: 0;
+  }
+}
